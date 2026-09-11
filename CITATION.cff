@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use Repository-as-State, please cite this repository and the associated paper when available."
+title: "Repository-as-State"
+type: software
+authors:
+  - family-names: Maddison
+    given-names: Paul
+repository-code: "https://github.com/PaulJMaddison/repository-as-state-public"
+license: Apache-2.0
+version: 1.0.0
+date-released: 2026-09-06
+abstract: "Public publication artefacts for research studying whether predecessor reasoning-session continuity is necessary after accepted software-engineering transitions when authoritative project state is preserved externally."
