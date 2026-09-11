@@ -1,0 +1,28 @@
+\section{Tests as an Executable Semantic-State Carrier}
+\label{sec:executable-memory}
+
+Tests can preserve executable behavioural constraints produced by earlier engineering work. That observation is ordinary software engineering, not a RaS novelty claim. The RaS-specific question is whether such durable constraints reduce the marginal value of predecessor reasoning-session history after an accepted transition.
+
+Suppose an engineering episode establishes:
+\begin{quote}
+Duplicate requests must not create duplicate effects.
+\end{quote}
+A repository may preserve this through an idempotency test. A future actor can then detect a violating implementation without receiving the conversation that originally discovered the invariant.
+
+Tests have useful continuity properties:
+\begin{itemize}
+    \item executable behavioural knowledge;
+    \item versioning alongside constrained code;
+    \item model-independent evaluation;
+    \item CI integration;
+    \item regression detection;
+    \item human reviewability.
+\end{itemize}
+
+But tests are not a complete memory system. They may omit architectural rationale, rejected alternatives, business intention, security intent, operational assumptions, and behaviours not exercised by the suite. An implementation can also overfit visible tests.
+
+Accordingly, this paper avoids the stronger slogan “tests are memory”. Tests are one class of durable semantic-state carrier among source, schemas, architecture records, build rules, history, and documentation. Their marginal contribution is an empirical ablation question.
+
+Context-file research provides a cautionary analogue. Repository-level AGENTS.md-style files can increase exploration and cost without improving task success, and controlled studies report small or null correctness effects depending on agent/task composition \citep{gloaguen2026agentsmd,khatri2026contextfiles}. More durable context is therefore not automatically better context.
+
+The experiment must also avoid circularity. Visible tests can communicate constraints, so they cannot be the only acceptance oracle. Hidden behavioural verification should be stored outside the experimental workspace and should accept equivalent correct implementations rather than compare against the historical patch text.
