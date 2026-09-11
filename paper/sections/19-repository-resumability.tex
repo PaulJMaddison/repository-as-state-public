@@ -1,0 +1,66 @@
+\section{Repository Resumability and State Reconstruction}
+\label{sec:resumability}
+
+Neither the Repository Resumability Index (RRI) nor the structured reconstruction-probe score is part of the accepted P1, P2 or Subject-C outcome set. This section specifies descriptive and future instrumentation for a separate falsification route: a fresh reasoner may preserve behavioural success yet incur enough rediscovery cost or reconstruction error to make disposal unattractive. No RRI or reconstruction-probe score is reported as an executed empirical result in this paper.
+
+Forced reset creates at least two separable questions:
+
+\begin{enumerate}
+    \item Did the fresh reasoner reconstruct the task-relevant accepted project state accurately?
+    \item Did the resulting engineering transition satisfy the behavioural verifier?
+\end{enumerate}
+
+A binary task outcome alone cannot distinguish those mechanisms.
+
+\subsection{Repository Resumability Index}
+
+RRI is retained as a \emph{descriptive project metric}:
+\begin{equation}
+\mathrm{RRI}
+=
+\frac{\text{successful verified continuations after eligible forced resets}}
+{\text{eligible forced resets}}.
+\label{eq:rri}
+\end{equation}
+
+It is not a novel estimator of causality and it is not a substitute for the matched A/B comparison in Section~\ref{sec:sufficiency}. Easy tasks can inflate an aggregate RRI, tasks need not be equally difficult, and RRI mixes reconstruction and implementation capability.
+
+An eligible reset is one for which:
+\begin{itemize}
+    \item the canonical allowed starting state was materialised correctly;
+    \item the reset and contamination gates passed before model invocation;
+    \item the current task and stable experimental instructions were available;
+    \item the declared model/configuration and tool environment were available;
+    \item no preregistered infrastructure-failure condition occurred before the agent could be tested.
+\end{itemize}
+
+A successful continuation requires the preregistered behavioural verifier to pass; compilation, textual similarity, agent self-report, or resemblance to the historical patch are insufficient.
+
+In a future study that executes this metric, report RRI by task/depth and repository, with uncertainty intervals only when the number and dependence structure of repeated observations justify them. In addition, report \emph{complete-sequence success}: whether an entire dependent task chain reaches every accepted state without an agent failure. This prevents strong performance on early/easy tasks from hiding continuity collapse later in the programme.
+
+\subsection{State-reconstruction probe}
+
+A future reconstruction-cost study can require the fresh reasoner, before editing in reset conditions, to produce a structured report containing only inspectable state:
+\begin{itemize}
+    \item relevant architecture and components;
+    \item current externally observable behaviour;
+    \item constraints and invariants;
+    \item relevant tests and evidence paths;
+    \item prior accepted work that matters to the current task;
+    \item work still required;
+    \item uncertainty and known unknowns.
+\end{itemize}
+
+The probe must not request hidden chain-of-thought and must be stored outside the subject workspace. It must never be injected into later tasks.
+
+A preregistered scoring rubric should derive objective items from hidden task ground truth: required components identified, constraints recovered, relevant verifier-facing behaviour described, and critical false claims or omissions. Where human scoring is unavoidable, evaluators should be blinded to condition when feasible and agreement should be reported.
+
+The probe separates:
+\begin{equation}
+R_t \rightarrow \widehat{S}_t
+\end{equation}
+from:
+\begin{equation}
+\widehat{S}_t \rightarrow \text{verified engineering transition},
+\end{equation}
+where $\widehat{S}_t$ is the reportable estimated task-relevant state. It does not claim to recover private reasoning state.
