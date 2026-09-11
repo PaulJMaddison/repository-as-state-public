@@ -1,0 +1,22 @@
+\section{Externalising Engineering Continuity}
+\label{sec:externalising}
+
+Software engineering already externalises reasoning into durable artefacts. That is established practice, not a RaS contribution. Source code, regression tests, schemas, architecture records, configuration, and commit history all preserve consequences of earlier decisions. The RaS hypothesis concerns what this ordinary engineering property may permit at the \emph{agent lifecycle} level.
+
+An engineering episode can contain false hypotheses, debugging attempts, discarded implementations, and repeated discussion. Once a task is accepted, the durable state may contain only a smaller set of decision-relevant consequences:
+\[
+\text{transient reasoning}
+\rightarrow
+\{\text{accepted implementation, tests, rationale, schemas, constraints}\}.
+\]
+This paper calls that \emph{decision-relevant semantic compression} only as descriptive terminology. It does not claim to have invented the engineering practice of persisting decisions in code, tests, and documentation.
+
+The compression can be lossy. Final code may reveal what was done without explaining why; tests may omit intent; comments can become stale; rejected alternatives may matter later. Repository memory research explicitly exploits commit history to recover project-specific knowledge that snapshots omit \citep{wang2025repomemory,li2026learningcommit}, and Git-bound agent memory can persist session-derived rationale in addition to project artefacts \citep{guo2026gitmemory}. These are direct warnings against assuming that accepted source state is self-explanatory.
+
+RaS therefore asks a narrower question: after an accepted transition, has enough decision-relevant state been externalised into the \emph{allowed project state} that predecessor reasoning-session history adds little marginal value for the next dependent task?
+
+The allowed project state may include source, tests, schemas, build information, documentation, architecture records, and Git history available at the cutoff. It need not be a source snapshot alone. Conversely, it must not contain hidden copies of predecessor model transcripts unless the experimental condition explicitly treats those as a repository memory artefact.
+
+If forced-reset agents fail because crucial rationale was not externalised, that is evidence against the strong repository-continuity hypothesis for that task. If semantic-state ablation removes an artefact class and success or reconstruction quality degrades, that suggests marginal continuity value. If an ablation has no effect, the information may be redundant or irrelevant.
+
+The goal is not to celebrate externalisation. It is to identify whether accepted engineering artefacts can serve as a sufficiently strong recovery boundary for fresh high-capability reasoning and how much rediscovery that boundary imposes.
