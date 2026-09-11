@@ -1,0 +1,54 @@
+\section{Related Work and Narrowed Novelty Boundary}
+\label{sec:related}
+
+Hostile literature review materially narrows the novelty claim. Repository-backed agent memory, commit-history memory, sequential software evolution benchmarks, interrupted-task handoff evaluation, lower-cost repository exploration, durable execution, and repository-scale replaceable compute all predate this programme. RaS is defensible only if it credits those overlaps and focuses on the treatment they do not isolate.
+
+\subsection{Repository-level agents and sequential software evolution}
+
+SWE-bench and SWE-agent establish repository-level issue resolution and agent--computer interfaces \citep{jimenez2024swebench,yang2024sweagent}. OpenHands and its SDK provide sandboxed execution, lifecycle control, memory mechanisms, security features, and multi-model routing \citep{wang2024openhands,wang2025openhandsSDK}. SWE-STEPS already evaluates chains of dependent pull requests and shows that isolated-task evaluation can overstate long-horizon performance \citep{shastry2026swesteps}. RaS therefore cannot claim novelty for repository-level coding or sequential task chains.
+
+Its narrower experimental variable is whether predecessor \emph{reasoning-session history} is needed after an accepted state transition when dependent task, model/runtime, tools and authoritative state are otherwise matched.
+
+\subsection{The closest empirical challenge: interrupted-task handoff}
+
+Handoff Debt is the closest direct empirical challenge identified in the reviewed literature \citep{kc2026handoff}. It freezes repository state at interruption points and compares successor agents receiving repository-only state, raw traces, summaries or structured notes. Context-bearing handoffs substantially reduce rediscovery effort relative to repository-only takeover in that setting, while solve-rate effects are smaller and model dependent.
+
+That work defeats any broad claim that “the repository alone makes predecessor context unnecessary” or that repository-only reconstruction is automatically economical. The remaining distinction is the reset boundary: Handoff Debt interrupts partially completed tasks, while RaS studies accepted engineering boundaries. The current RaS correctness samples do not establish that the accepted-boundary distinction removes rediscovery cost; resource/economic evidence remains incomplete.
+
+\subsection{Git-bound and repository memory}
+
+Guo explicitly argues that agentic-development memory should be Git-bound, linking assistant sessions to commit state and routing queries over structural maps, episodes and decision synthesis \citep{guo2026gitmemory}. This strongly overlaps the broad “repository as memory” intuition, but persists session-derived information inside the memory system. RaS instead tests a condition in which predecessor reasoning-session state is absent after an accepted transition.
+
+Other work uses commit history as non-parametric repository memory for code localisation \citep{wang2025repomemory} or builds online repository memory from historical commits to learn project-specific change patterns \citep{li2026learningcommit}. These results make clear that repository history can be useful memory while also warning that a current source snapshot may omit project-specific patterns.
+
+\subsection{Repository context files}
+
+Repository instruction files are established context mechanisms. Sun et al. document public Cursor rule files containing project context and engineering guidance \citep{sun2026cursorrules}. Gloaguen et al. find that AGENTS.md-style context files can reduce task success and raise inference cost despite increasing exploration \citep{gloaguen2026agentsmd}. Khatri's ablation reports bounded/null correctness effects in its studied setting \citep{khatri2026contextfiles}. These findings weaken any assumption that more curated repository documentation automatically improves resumability.
+
+\subsection{Repository exploration, routing and agent memory}
+
+Repository exploration is itself measurable and costly. Awad and Ivanov evaluate lower-cost explorer models and identify quality/cost operating points for localisation \citep{awad2026exploration}; RouteLLM studies learned model routing \citep{ong2024routellm}. MemGPT and later memory work establish managed external memory as a broad agent design space \citep{packer2023memgpt,du2026memory,luo2026memory}. Consequently, model routing, cheaper exploration and external memory are not RaS novelty claims.
+
+\subsection{Durable execution and inference-state management}
+
+Durable Functions formalises stateful workflows under compute--storage separation and replay \citep{burckhardt2021durable}; durable AI workflow research also studies semantic isolation across pauses and continuations \citep{mozafari2026semantic}. RaS does not claim to invent checkpoint/restart or transactional computation. Its object is semantic engineering continuity for a fresh nondeterministic reasoner.
+
+PagedAttention/vLLM, DistServe and Mooncake show that KV-cache allocation and serving architecture are more complex than one conversation occupying one dedicated GPU \citep{kwon2023vllm,zhong2024distserve,qin2024mooncake}. RaS therefore makes no provider-internal saving claim from session disposal.
+
+Cursor Continuity persists repository-serving state over replaceable compute \citep{marti2026continuity}. This is repository-infrastructure precedent, not an agent-continuity experiment.
+
+\subsection{What remains plausibly distinct}
+
+After removing broad claims, the reviewed work did not identify an exact prior matched experiment combining all of the following:
+
+\begin{enumerate}
+    \item dependent software-engineering tasks separated by accepted/validated boundaries;
+    \item deliberate removal of predecessor high-capability reasoning-session state after those boundaries;
+    \item a matched history-retaining control with task/model/tools/environment and accepted state otherwise controlled;
+    \item correctness reporting that allows forced reset to lose; and
+    \item explicit reconstruction/resource accounting as a separate possible falsifier.
+\end{enumerate}
+
+This is a provisional literature-search finding, not proof that no such prior work exists. The broad repository-memory and sequential-agent space is already crowded, and a newly discovered exact predecessor study would narrow the novelty further.
+
+P1, P2 and Subject C now provide bounded empirical samples of the behavioural intervention, but they do not transform the novelty claim into a general theory. The economic/reconstruction part of the proposed distinction remains particularly under-tested because the current resource evidence is incomplete.
