@@ -1,0 +1,40 @@
+\section{Results}
+\label{sec:results}
+
+P0 was executed exactly once and classified \mixedstatus; its A/B correctness outcome is not treated as causally interpretable and P0 is not rerun. The controlled evidence that follows consists of bounded Subject-B P1/P2 samples and one independent Subject-C cross-repository replication step. None is a general validation of Repository-as-State.
+
+\subsection{Subject-B P1}
+
+P1 compared persistent-session and fresh-session conditions across three matched tasks. Condition A and Condition B each satisfied 18/30 governing behaviours. The matched vectors had 30 agreements and 0 disagreements; both conditions passed two of the three tasks. This is bounded positive evidence for the narrow observation that the two conditions produced the same verifier-defined behaviour vector in this P1 sample. Because the task-solving model is stochastic and the sample is small, it is not deterministic equality, formal equivalence, non-inferiority, universal sufficiency, or a resource-cost result.
+
+\subsection{Subject-B P2}
+
+P2 used four tasks, three repetitions, two conditions, 24 executions and 12 matched task-by-repetition pairs. The four task contracts define 13 governing behaviours per repetition, giving 39 behaviour observations per condition. Both conditions satisfied 0/39 and failed 39/39. The matched vectors had 39 agreements and 0 disagreements, and candidate-level overall verifier passes were 0/12 in both conditions.
+
+The P2 result is a floor effect. No behavioural correctness difference was observed between the persistent-session and fresh-session conditions in this P2 sample, but because both conditions were at the floor, P2 does not demonstrate successful behavioural preservation by either condition and cannot be interpreted as evidence of behavioural equivalence or repository-state sufficiency. Its value is therefore methodological and falsificatory rather than positive preservation evidence. P1 and P2 are not pooled.
+
+\subsection{Subject-C cross-repository replication step}
+
+Subject C used three sequential tasks, three repetitions per condition, 18 scheduled/model-active units and nine matched task-by-repetition units. Persistent-session Condition A satisfied 12/30 governing behaviours; fresh-session Condition B satisfied 15/30. Candidate full passes were tied at 2/9 per condition. Of 30 matched behaviour observations, 25 agreed and five disagreed; one disagreement favoured A and four favoured B.
+
+The task-level pattern is essential. SC\_T01 was A 1/9 and B 5/9, with five agreements and four disagreements. SC\_T02 was 0/9 in both conditions, with nine agreements and no disagreements. SC\_T03 was A 11/12 and B 10/12, with 11 agreements and one disagreement. The aggregate therefore must not be presented as a general fresh-session win.
+
+The 30 behaviour observations are not 30 independent experimental replicates. They are nested within nine matched task-by-repetition units, and multiple behaviours are scored from the same candidate/task output. In Condition A, the three task outputs within a repetition also share one persistent reasoning-session chain. The current analysis is descriptive and does not treat nested behaviour rows as independent Bernoulli trials.
+
+The task-solving model is stochastic: repeating the same state, task, prompt, model and configuration can produce different candidates and verifier outcomes. With only three repetitions per task, the four-to-one discordant direction is descriptive only and may reflect ordinary run-to-run variation rather than a systematic condition effect. Subject C does not establish superiority, inferiority, equivalence or non-inferiority.
+
+Subject C is an independent cross-repository replication step toward broader external validation. One additional subject/repository does not by itself satisfy the programme roadmap's eventual target of multiple unrelated repositories, task classes, languages/architectures and broader variation. Some public artefact filenames retain `level3` because that was the internal programme stage name; the label is not a claim of population-level external validity.
+
+P1, P2 and Subject C are reported separately and are not numerically pooled.
+
+\subsection{Adjudication integrity and resource boundary}
+
+P2's first adjudication attempt remains preserved as invalid history: placeholder calls produced zero valid adjudications, premature unblinding occurred, and a later sealed-verifier diagnostic result was excluded. The accepted recovery used fresh blinded adjudications, froze them before unblinding, and repaired only a derived denominator error; no P2 task-model reruns were added.
+
+Subject C froze all 18 model-active outputs before blind semantic adjudication. No project build, compiler/typechecker, project/public test, or lint result was used as its correctness oracle. Infrastructure/harness events are engineering provenance and are excluded from experimental failure counts, retries, denominators and condition outcomes.
+
+Resource/reconstruction telemetry remains separate and descriptive. The current controlled evidence does not establish a cost, speed, token, monetary, security or provider-serving advantage. No RRI or structured reconstruction-probe score forms part of the accepted P1, P2 or Subject-C result set.
+
+The project uses the claim categories in Table~\ref{tab:claim-categories} to prevent theoretical, observed, and hypothetical statements from being silently presented as findings.
+
+\input{tables/claim-categories}
