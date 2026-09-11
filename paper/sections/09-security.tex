@@ -1,0 +1,30 @@
+\section{Security and Least Privilege}
+\label{sec:security}
+
+RaS does not establish a security property. It \emph{permits} an architecture in which reasoning lifetime, execution privilege, and credential lifetime are independently scoped. That distinction is important.
+
+A high-capability reasoner may need repository read access and permission to propose a patch or bounded work package. An executor may need workspace write access, compiler/test access, restricted Git, and tightly scoped environment actions. Production credentials may belong to neither. If policy is enforced outside the model, such separation can reduce the permissions held by any single component.
+
+This is a \textbf{RaS-enabled architecture}, not proven security improvement. Prompt instructions are not access control; repository permissions, sandboxes, network policy, credential brokers, command allowlists, approval gates, and independently collected validation must enforce boundaries.
+
+Threats include:
+
+\paragraph{Prompt injection and poisoned semantic state.}
+Malicious comments, instruction files, generated documentation, issue text, commit metadata, and other repository artefacts can manipulate reconstruction. Durable generated state can propagate an attack to future fresh reasoners.
+
+\paragraph{Malicious tests and verifier-shaped behaviour.}
+Tests are executable inputs to agent decisions and can themselves be compromised. Visible test success cannot be assumed to imply safe behaviour.
+
+\paragraph{Compromised dependencies.}
+Build systems may execute dependency hooks or scripts. Canonicalisation of the workspace does not make external dependencies trustworthy.
+
+\paragraph{Work-package or patch injection.}
+A compromised reasoner can craft a proposal intended to exploit the executor; a compromised executor can alter the requested patch, falsify local evidence, or attempt privilege escalation.
+
+\paragraph{Secrets in authoritative state.}
+A repository can accidentally contain credentials or sensitive data. Making repository state central to reconstruction increases the importance of provenance, secret scanning, and access controls; RaS does not make such content safe.
+
+\paragraph{Human approval boundaries.}
+High-consequence operations may require explicit human approval even when reasoner, executor, and local tests agree.
+
+Potential benefits such as reduced blast radius, narrower credential distribution, and shorter-lived capabilities remain \textbf{IMPLICATIONS}. They require adversarial evaluation before any security claim can be upgraded.
