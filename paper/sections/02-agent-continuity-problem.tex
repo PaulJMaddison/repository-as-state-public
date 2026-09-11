@@ -1,0 +1,40 @@
+\section{The Agent Continuity Problem}
+\label{sec:continuity-problem}
+
+Long-running software-engineering work is path dependent. A later task may depend on an earlier architectural decision, interface, regression test, migration, or failure mode. A future actor must recover enough relevant state to continue correctly.
+
+Agentic systems can accumulate conversational history, tool observations, repository exploration, build results, hypotheses, rejected approaches, environment state, retry history, model outputs, and task progress. Persistent systems may preserve conversation, compacted context, summaries, episodic memory, working memory, server-side state, cached prompts, or persistent tool sessions. These mechanisms can be useful and are not claimed to be unnecessary.
+
+Memory systems such as MemGPT manage information across tiers \citep{packer2023memgpt}; current surveys cover a broad family of persistent and retrieved agent memories \citep{du2026memory,luo2026memory}. Repository-specific memory work also uses commit history and Git-bound session artefacts \citep{wang2025repomemory,guo2026gitmemory}. The RaS question is therefore not whether memory exists, but where the \emph{marginal continuity value} lies after an engineering transition has been accepted.
+
+Software engineering is an unusually favourable domain because project state can include:
+\begin{itemize}
+    \item source and generated interfaces;
+    \item tests and behavioural constraints;
+    \item Git history and accepted diffs;
+    \item configuration/toolchain definitions;
+    \item schemas and migrations;
+    \item architecture/security records;
+    \item product/behavioural documentation;
+    \item CI/build evidence.
+\end{itemize}
+
+Let $H_t$ denote \emph{predecessor reasoning-session history not already represented as allowed project state}, $R_t$ the accepted project/repository state, $U_t$ the next task, and $S$ verifier-defined success. Conceptually, the continuity hypothesis asks whether:
+\begin{equation}
+P(S\mid R_t,U_t)
+\approx
+P(S\mid H_t,R_t,U_t)
+\label{eq:continuity}
+\end{equation}
+over a declared task/model/environment population.
+
+This is not the P0 estimator. Section~\ref{sec:sufficiency} defines the observable matched A/B target. The equation only states what marginal information $H_t$ is supposed to represent.
+
+The hypothesis is plausible because engineering decisions are routinely reified, but that practice is not novel and does not prove sufficiency. Important rationale can remain outside the repository; documentation can be stale; tests can be incomplete; external systems can contain authoritative runtime facts. A repository may be excellent at preserving one task's constraints and poor at another's.
+
+Conversation history also contains guesses, abandoned hypotheses, and stale observations. Repository artefacts can likewise be wrong, but many can be independently checked by compilers, tests, schemas, build systems, and behavioural verification. This motivates the research principle:
+\begin{quote}
+\textbf{Persist authoritative state. Reconstruct computation.}
+\end{quote}
+
+The principle is a hypothesis about engineering lifecycle boundaries, not a general law of agents.
