@@ -1,0 +1,27 @@
+\section{Durable Documentation and Selective Retention}
+\label{sec:durable-docs}
+
+Code and tests do not necessarily preserve why an architectural boundary exists, why an alternative was rejected, what security assumption is active, or which migration phase remains incomplete. Some information may therefore require explicit durable semantic representation.
+
+RaS does not advocate dumping complete reasoning transcripts into Markdown. Guo's Git-bound memory work shows one legitimate alternative architecture in which session-derived episodes and decisions are deliberately persisted and retrieved \citep{guo2026gitmemory}. RaS tests whether some accepted boundaries can avoid needing that predecessor-session memory; it does not claim transcript persistence is inherently wrong.
+
+A conceptual retention heuristic is:
+\begin{equation}
+P_{\mathrm{reuse}}(x)L_{\mathrm{missing}}(x)
+>
+C_{\mathrm{persist+retrieve}}(x),
+\label{eq:retention}
+\end{equation}
+where the terms represent reuse likelihood, loss if missing, and preservation/retrieval cost. The expression is not an estimable production formula and is not used as an experimental statistic.
+
+Candidate durable documentation includes architecture decisions, operational constraints, security boundaries, migration state, non-obvious business intent, and rejected alternatives whose repetition would create meaningful risk.
+
+But more context can hurt. Gloaguen et al. report that repository-level AGENTS.md context files can reduce success while increasing inference cost \citep{gloaguen2026agentsmd}; Khatri reports bounded null correctness effects in a controlled two-agent ablation \citep{khatri2026contextfiles}. These results make documentation quality and selectivity empirical variables rather than presumed advantages.
+
+Condition C should therefore ask:
+\begin{quote}
+\textbf{Which durable repository artefacts have marginal continuity value at accepted task boundaries?}
+\end{quote}
+It should not ask whether agents fail after deleting large amounts of useful state.
+
+A successful RaS architecture may ultimately require selective semantic documentation. If the amount of specially curated state required grows comparably to the predecessor history it replaces, or only works when tailored by an author who already knows the future tasks, that is evidence against the strong state-economics/generalisation claim.
