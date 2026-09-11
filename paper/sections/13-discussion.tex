@@ -1,0 +1,50 @@
+\section{Discussion}
+\label{sec:discussion}
+
+The hostile audit changes how RaS should be interpreted. The broad intuition that “software repositories can act as memory” is not novel. Git-bound agent memory, commit-history memory, context files, repository maps, and sequential coding evaluation already exist \citep{guo2026gitmemory,wang2025repomemory,li2026learningcommit,shastry2026swesteps}. The potentially useful contribution is narrower: make \emph{accepted engineering boundaries} the disposal boundary and measure the value of predecessor reasoning-session history at those boundaries.
+
+\subsection{The strongest adverse prior}
+
+Handoff Debt shows that repository-only takeover of interrupted work can incur substantial rediscovery compared with context-bearing handoffs \citep{kc2026handoff}. RaS should not claim this evidence is irrelevant. It suggests that reasoning history can carry valuable information not yet represented in partial repository state.
+
+The post-acceptance boundary remains the distinguishing hypothesis. The current P1/P2/Subject-C correctness samples do not settle the corresponding economic question because reconstruction/resource evidence is incomplete. A future valid resource study must therefore be allowed to find that behavioural continuation is possible while repository rediscovery is too expensive to justify session disposal.
+
+\subsection{Decision-relevant semantic compression is ordinary engineering}
+
+Software projects have always compressed design reasoning into code, tests, documentation, schemas, and history. Calling that “decision-relevant semantic compression” describes a useful mechanism but does not make it new. RaS concerns the possible \emph{architectural consequence}: because engineering externalises substantial decision-relevant state, persistent model history may have limited marginal value after some accepted boundaries.
+
+That consequence must be measured, not inferred from the existence of tests or Git.
+
+\subsection{Observed origin remains anecdotal}
+
+The architecture was recognised through repeated practical use involving human orchestration, high-capability reasoning, local execution agents, deterministic evidence, and repository persistence. This remains motivation only. It is exposed to confirmation bias, task selection, author familiarity, survivor bias, model familiarity, human rescue, and undocumented assistance.
+
+\subsection{Persistent agents may simply be better}
+
+A negative outcome remains credible. Persistent history may save rediscovery, preserve rationale omitted from durable artefacts, and provide low-cost continuity when compaction and caching are effective. RaS may work only at coarse accepted boundaries, for local tasks, or in unusually disciplined repositories. Hybrid designs may dominate both permanent persistence and forced reset.
+
+\subsection{What the accepted evidence says}
+
+P1 found equal non-zero behavioural performance in its three matched tasks: 18/30 in each condition, 30 agreements and no disagreements. Because the model is stochastic and the sample is small, this is sample agreement, not proof of deterministic equality or equivalence.
+
+P2 expanded the same-repository block to four tasks and three repetitions, but both conditions satisfied 0/39 behaviours, with 39 agreements, no disagreements and 0/12 candidate-level overall passes. Thus P2 detected no observed condition difference while providing no positive evidence that either condition successfully solved the Level-2 tasks. The floor effect prevents an equivalence interpretation.
+
+Subject C adds one bounded cross-repository replication step. Persistent A satisfied 12/30 behaviours and fresh B 15/30; 25/30 matched behaviour observations agreed and five differed, with four disagreements favouring B and one A. Candidate full passes were tied at 2/9 per condition. Most discordance is in SC\_T01; SC\_T02 is at floor in both conditions; SC\_T03 is near ceiling and slightly favours A on behaviour count.
+
+The 30 behaviour observations are nested within nine matched task-by-repetition units and are not independent experimental replicates. With only three repetitions per task and stochastic task solving, the 4-to-1 discordant direction is descriptive only and may reflect ordinary run-to-run variation. Subject C does not establish that fresh sessions are superior, persistent sessions inferior, or the conditions equivalent/non-inferior.
+
+P1, P2 and Subject C are separate, unpooled samples. Taken together they demonstrate that post-acceptance reasoning-state persistence is experimentally testable and that outcomes can vary by task and study design; they do not establish a population-level condition effect.
+
+\subsection{Cross-repository evidence is not full external validation}
+
+Subject C is independent of Subject B and therefore improves the evidence beyond a single-repository programme. However, one additional subject does not satisfy the roadmap's full Level-3 threshold of multiple unrelated repositories/task classes, languages/architectures and broader structural variation. The appropriate description is a cross-repository replication step toward external validity, not generalisation.
+
+\subsection{Human and AI complementarity is secondary}
+
+Human and AI systems exhibit different capability profiles. Humans may contribute persistent goals, strategic problem selection, taste and risk judgement; AI systems may contribute synthesis, formalisation, critique and implementation leverage; deterministic systems provide executable checks. This describes the motivating workflow but is not part of the central causal claim.
+
+\subsection{What a useful negative result would teach}
+
+If reset fails because crucial rationale is absent, the study identifies a state-representation gap. If reset succeeds but reconstruction consumes most resources, the continuity hypothesis may survive while the economic hypothesis fails. If performance depends on tailored state files, RaS may reduce to a repository-documentation discipline rather than a general lifecycle property. If effects disappear on unrelated repositories or models, external validity is narrow.
+
+The theory is useful only if those outcomes are allowed to count against it.
