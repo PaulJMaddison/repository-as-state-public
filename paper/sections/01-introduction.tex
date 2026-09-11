@@ -1,0 +1,69 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Software-engineering agents increasingly operate across repositories, shells, test runners, browsers, issue trackers, build systems, and other development tools. SWE-bench established repository-level issue resolution as a measurable software-engineering task \citep{jimenez2024swebench}; SWE-agent showed that the design of the agent--computer interface materially affects navigation, editing, and testing \citep{yang2024sweagent}; and OpenHands provides an open platform and SDK for software agents with sandboxed execution, lifecycle control, memory management, and model routing \citep{wang2024openhands,wang2025openhandsSDK}. Sequential evaluation is also no longer novel in itself: SWE-STEPS evaluates coding agents across chains of dependent pull requests and shows that isolated-task success can hide spillover effects \citep{shastry2026swesteps}.
+
+Agent memory is likewise an active research area. MemGPT manages information across memory tiers \citep{packer2023memgpt}; recent surveys cover episodic, semantic, reflective, hierarchical, and learned memory mechanisms \citep{du2026memory,luo2026memory}; and repository-specific work uses commit history or Git-bound ledgers as agent memory \citep{wang2025repomemory,li2026learningcommit,guo2026gitmemory}. RaS therefore cannot claim novelty for repository-aware agents, external memory, Git-backed memory, repository retrieval, or sequential coding evaluation.
+
+The narrower question is architectural and causal:
+
+\begin{quote}
+\textbf{After an engineering transition has been accepted and its consequences persisted, how much additional value does predecessor reasoning-session state provide for the next dependent task?}
+\end{quote}
+
+RaS investigates the hypothesis that, for a meaningful class of sequential software-engineering work, accepted project state can carry enough decision-relevant continuity that the high-capability reasoning process does not need to persist between accepted transitions. The central proposition remains:
+
+\begin{quote}
+\textbf{Durable engineering continuity does not necessarily need to live inside the expensive high-capability reasoning process.}
+\end{quote}
+
+This is not the claim that reasoning disappears as a computational cost. A fresh reasoner may need to rediscover information, and that rediscovery can dominate the workload. Indeed, Handoff Debt finds that when coding tasks are interrupted mid-work, repository-only takeover requires substantially more events and prompt tokens than context-bearing handoffs, while solve-rate effects are smaller and model dependent \citep{kc2026handoff}. That evidence is adverse to any naive claim that repository-only resumption is automatically efficient. RaS therefore places its reset boundary after \emph{validated accepted transitions}, not at arbitrary interruption points, and treats reconstruction cost as a first-class possible falsifier.
+
+The central inversion can still be stated compactly:
+
+\begin{quote}
+\textbf{The persistent object need not be the developer; it can be the software.}
+\end{quote}
+
+Software projects offer unusually rich domain-native durable state: source code, tests, schemas, build definitions, architecture records, Git history, configuration, and validation evidence. Engineers have always externalised decisions into such artefacts. That practice is not the novelty. The RaS question is what this existing property implies for the lifecycle of expensive reasoning processes.
+
+We define a reasoning process as \emph{disposable with respect to programme continuity} when terminating and replacing it after an accepted engineering transition does not materially reduce subsequent correct continuation, provided that the replacement receives the same authoritative durable state and current task and is matched on model capability/configuration, tool interface, and execution environment. The definition is behavioural. It does not assert that the replacement reproduces the predecessor's internal reasoning or that no recomputation occurs. The current experiments do not establish this property generally; they provide bounded samples against it.
+
+Figure~\ref{fig:ras-architecture} summarises the proposed loop.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/ras-architecture}
+\caption{Conceptual Repository-as-State architecture. The durable object is accepted project state; reasoning and execution processes may be replaced between validated transitions. The figure is architectural, not empirical evidence.}
+\label{fig:ras-architecture}
+\end{figure}
+
+The architecture is:
+\[
+R_t + U_t
+\rightarrow
+\text{bounded reconstruction}
+\rightarrow
+\text{high-capability reasoning}
+\rightarrow
+\text{execution}
+\rightarrow
+\text{validation}
+\rightarrow
+R_{t+1}.
+\]
+After acceptance, the reasoning process may be terminated. A later fresh process reconstructs what it needs from $R_{t+1}$ and the next task.
+
+The idea arose from repeated practical workflows involving human problem selection, high-capability AI reasoning, bounded implementation packages, local execution agents, deterministic evidence, repository persistence, and fresh reasoning sessions. That origin is \textbf{OBSERVED MOTIVATION}. It is vulnerable to confirmation bias, author familiarity, survivor bias, and undocumented human assistance, and it is not experimental validation.
+
+After hostile review of current prior work, this paper claims the following narrower contributions:
+
+\begin{enumerate}
+    \item a post-acceptance \emph{reasoning-state disposal} hypothesis for sequential software engineering, distinguished from interrupted-task handoff and Git-bound transcript memory;
+    \item a matched persistent-history versus forced-reset experimental intervention intended to vary predecessor conversational/model-native history while holding accepted repository state, task, model, tools, and environment constant;
+    \item a bounded empirical application of that intervention across the methodology-corrected P1/P2 studies and one independent cross-repository Subject-C replication step, reported without pooling or post-hoc equivalence claims;
+    \item an explicit \emph{measurement design}, not an executed outcome claim, for repository rediscovery and structured non-chain-of-thought state-reconstruction probes as possible falsification routes when fresh-session reconstruction is costly or incomplete;
+    \item a broader lifecycle framing in which reasoning persistence, execution state, and operational privilege can be varied independently, while treating semantic-state ablation, tiered execution, reconstruction economics, and security benefits as future or secondary hypotheses rather than findings of the accepted outcome set.
+\end{enumerate}
+
+The empirical record is now bounded rather than absent. P0 was executed once and rejected for causal A/B correctness interpretation after a mixed methodology/model failure. P1 observed equal non-zero behavioural performance in its three-task sample; P2 observed equal floor-level performance in a four-task, three-repetition same-repository block; and Subject C added one independent cross-repository replication step with mostly matched outcomes plus five discordant behaviour observations. Because the task-solving model is stochastic, the samples are small, Subject C has only nine matched task-by-repetition units, and no equivalence/non-inferiority design was preregistered, none of these results establishes general disposability, superiority, equivalence, or universal repository-state sufficiency.
