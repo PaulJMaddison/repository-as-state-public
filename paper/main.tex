@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers]{natbib}
+\usepackage{microtype}
+\usepackage{seqsplit}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{3em}
+
+\newcommand{\RaS}{Repository-as-State}
+\newcommand{\RRI}{Repository Resumability Index}
+\newcommand{\RTF}{Reconstruction Token Fraction}
+\newcommand{\breakcode}[1]{\texttt{\seqsplit{#1}}}
+\newcommand{\mixedstatus}{\texttt{MIXED\_\allowbreak METHODOLOGY\_\allowbreak AND\_\allowbreak MODEL\_\allowbreak FAILURE}}
+
+\title{Repository-as-State:\\Externalising Agent Continuity for Stateless High-Capability Reasoning}
+\author{Paul Maddison\\Independent Researcher\\Liverpool, United Kingdom}
+\date{Paper v1.0 --- research-programme release --- 6 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Long-horizon software-engineering agents can retain conversational history, summaries, memory stores, execution state, and repository observations across tasks. This paper asks whether one part of that continuity---predecessor high-capability reasoning-session history---is necessary after a software-engineering transition has reached an accepted durable state. \emph{Repository-as-State} (RaS) treats accepted project state as the persistent programme object and compares persistent-session continuation with fresh-session reconstruction under matched task, model/runtime, workspace and verification controls. Here ``stateless'' refers only to predecessor reasoning-session continuity; durable repository state and controlled execution state are not removed.
+
+The contribution is deliberately narrower than repository-aware coding, Git-backed memory, durable workflow execution, or sequential software-agent evaluation, all of which have substantial prior art. RaS focuses on disposal at \emph{accepted engineering boundaries}, where the predecessor's decision-relevant consequences should already have been externalised into project artefacts, and treats reconstruction cost as a separate falsification route rather than assuming it is free.
+
+The empirical record is bounded and mixed. The original P0 methodology pilot was executed once and classified \mixedstatus; its A/B correctness outcome is not treated as causal evidence. Subject-B P1 observed 18/30 behaviours in each condition with 30/30 matched behaviour agreements. Subject-B P2 observed 0/39 in each condition with 39/39 agreements, a floor effect that provides no positive evidence of successful behavioural preservation. One independent Subject-C cross-repository replication step observed 12/30 behaviours for persistent-session A and 15/30 for fresh-session B, with 25/30 matched agreements, five disagreements (one favouring A and four B), and candidate full passes tied at 2/9 per condition. The task-solving model is stochastic, Subject C has only three repetitions per task, and its 30 behaviour observations are nested within nine matched task-by-repetition experimental units; the observed direction is therefore descriptive only, not evidence of systematic superiority, equivalence, or non-inferiority. P1, P2 and Subject C are not pooled.
+
+These results do not establish that conversation context never matters, that repository state is universally sufficient, or that RaS is cheaper or more secure. They support a narrower conclusion: the post-acceptance value of predecessor reasoning state is an experimentally tractable systems question, and authoritative repository state can be evaluated as a continuity boundary without treating accumulated conversation as project state.
+\end{abstract}
+
+\noindent\textbf{Keywords:} software engineering; AI coding agents; agent continuity; repository state; reproducibility; empirical software engineering.
+
+\input{sections/01-introduction}
+\input{sections/02-agent-continuity-problem}
+\input{sections/03-repository-as-state}
+\input{sections/17-externalising-engineering-continuity}
+\input{sections/04-transactional-reasoning}
+\input{sections/06-repository-sufficiency}
+\input{sections/07-cost-model}
+\input{sections/05-tiered-execution}
+\input{sections/08-executable-memory}
+\input{sections/18-durable-documentation}
+\input{sections/09-security}
+\input{sections/19-repository-resumability}
+\input{sections/10-experimental-method}
+\input{sections/23-ai-assistance}
+\input{sections/11-results}
+\input{sections/22-reproducibility}
+\input{sections/14-related-work}
+\input{sections/12-threats-to-validity}
+\input{sections/13-discussion}
+\input{sections/20-repository-agent-state-scalability}
+\input{sections/21-authoritative-state-principle}
+\input{sections/15-future-work}
+\input{sections/16-conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
