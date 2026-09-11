@@ -1,0 +1,88 @@
+\section{Forced-State-Reset Evaluation and Experimental Method}
+\label{sec:method}
+
+The central intervention removes predecessor reasoning-session continuity after an \emph{accepted} engineering transition and tests whether a fresh reasoner can continue a dependent programme from the same authoritative project state.
+
+P0 was the original methodology pilot. It was executed exactly once and classified \mixedstatus; its A/B correctness outcome is not treated as causally interpretable and the pilot is not rerun. The P0 protocol remains historical method context. P1 and P2 are methodology-corrected Subject-B studies, and Subject C is one independent cross-repository replication step. Their results are reported separately and are not pooled.
+
+The task-solving model is stochastic. The same repository state, task, prompt, model and execution configuration can produce different candidate code and verifier outcomes on another run. Repetitions therefore sample stochastic condition behaviour; matched agreement is not deterministic equality. Subject C has only three repetitions per task and nine matched task-by-repetition units. Its 30 behaviour observations are nested within those units and task contracts and must not be analysed as 30 independent experimental replicates. No equivalence, non-inferiority or superiority margin/test was introduced after observing the data.
+
+\subsection{Study scope and public-safe task characterisation}
+
+The private subject identities and historical source boundaries are withheld under the declared evidence boundary, but the selection and execution shape is frozen publicly. Subject C was selected from 22 candidate repositories: five met the preregistered eligibility rules and 17 were excluded. The deterministic selection procedure then chose three eligible sequential, locally testable historical task chains. Each selected task was executed three times per condition, producing 18 scheduled/model-active runs and nine matched task-by-repetition units. The task-solving runtime was frozen before execution, including the model, CLI/runtime, sandbox policy, condition mapping procedure and future-history controls. These counts describe the study population actually sampled; they do not imply that the three tasks or one additional repository represent software engineering generally.
+
+P1 used three matched sequential tasks. P2 used four tasks, three repetitions and two conditions, producing 24 executions and 12 matched task-by-repetition pairs. Subject C deliberately changed repository/subject rather than pooling evidence with Subject B. The public records describe task counts, behavioural contracts, selection rules and execution controls while withholding private source material that would reveal the subject or hidden verifier implementation.
+
+\subsection{Causal target}
+
+The primary comparison is:
+
+\paragraph{A --- Persistent-history control.}
+The high-capability reasoner retains the predecessor reasoning-session history defined by the experimental chain while receiving the frozen task-specific authoritative state.
+
+\paragraph{B --- Forced reset.}
+A fresh high-capability reasoning session receives no predecessor conversation, hidden summary, copied reconstruction or resume state while receiving the same frozen task-specific authoritative state.
+
+The intended treatment is \textbf{availability of predecessor reasoning-session history}. Everything else capable of materially affecting outcome must be matched, isolated or explicitly treated as a limitation.
+
+The experiments do not compare “repository” against “no repository”, nor do they require generated code from one experimental task to become the next task's state. Each task receives its preregistered historical PRE boundary so A/B repository state remains matched; in persistent chains only the defined reasoning/session continuity carries forward.
+
+\subsection{Canonical task-boundary materialisation}
+
+Before every experimental task in both conditions, the harness must materialise the same accepted task boundary into a clean workspace. Persistent A must not inherit untracked files or tool residue merely because its reasoning session persists.
+
+Relevant invariants include:
+\begin{itemize}
+    \item allowed repository/source state at the boundary;
+    \item tracked and untracked workspace contents;
+    \item system/developer experiment instructions and current task text;
+    \item model identifier/runtime and exposed configuration;
+    \item tool schema, executor implementation and privilege boundary;
+    \item language/toolchain and environment policy;
+    \item network policy;
+    \item correctness oracle and acceptance rule.
+\end{itemize}
+
+Shell history, editor state, temporary files, previous-agent scratch files, local databases and generated summaries must not become hidden condition-specific continuity channels.
+
+\subsection{Prompt, model and hidden-state controls}
+
+The task contract and stable experiment instructions must be frozen before execution. Condition differences may expose predecessor session history only according to the preregistered treatment. Account-level or provider-side memory that cannot be controlled is a threat to identifiability and must be disclosed if present.
+
+Prompt/context caching is not itself the behavioural treatment. Exposed cache counters may be reported for resource accounting, but behavioural conclusions must not be inferred from unobservable provider internals.
+
+\subsection{Future-history and task-leakage controls}
+
+Historical task workspaces must exclude post-cutoff solution information. A fail-closed future-history/leakage gate must prevent access to future repository objects, refs, alternate object stores, source-repository links, hidden patches, task-generation material or other post-cutoff solution artefacts.
+
+Information legitimately present in the accepted PRE state is allowed even when it is useful. Leakage is information from the future or from hidden task/verifier construction that the task-solving agent was not meant to receive.
+
+\subsection{Behavioural verification}
+
+Correctness evidence must be frozen before outcome inspection and must test disclosed task requirements without requiring the historical textual implementation. Hidden verifier implementations may remain private, but the behavioural requirements they enforce may not be secret requirements.
+
+The Subject-C verifier package was independently qualified before experimental output adjudication. Across its three selected historical tasks, all three PRE states produced the expected failing result and all three POST states produced the expected passing result. Ten targeted negative controls were all detected; ten alternate-valid implementations were all accepted; and ten adversarial false-positive controls were all rejected. The implementation-independence check and all three future-history gates passed. Project build/compiler/public-test/lint results were not used as Subject-C correctness evidence. An earlier verifier version that was too coupled to the historical implementation was rejected rather than used.
+
+\subsection{Development and infrastructure are outside the experiment}
+
+Harness development, authentication, ACL/materialisation work, launcher/controller debugging, CLI compatibility work, staging/transport problems, environment repair and disposable pre-experiment smoke runs are \textbf{engineering provenance, not experimental outcomes}.
+
+A Subject-C experimental unit began only when its valid locked task-solving model execution became genuinely model-active. Once model-active, the unit was consumed and could not be rerun for quality. Pure transport or infrastructure failure before task-model activity did not create a behavioural observation. If continuing would have required changing a frozen experimental invariant after model activity, the experiment would have stopped rather than silently repairing or rerunning the unit.
+
+This boundary prevents infrastructure work from appearing as experimental failures, retries, denominators, condition outcomes or correctness observations. Historical P1/P2 records may retain process-event provenance, but such metadata is not part of their behavioural correctness denominator unless the relevant protocol explicitly defines it as an experimental model-active observation.
+
+\subsection{No human rescue and outcome selection}
+
+After a valid task-model run becomes active, prohibit hints, file pointers, copied information, prompt adjustment, manual candidate edits, cross-condition rescue and selective quality reruns. Repetitions are experimental repetitions, not retries. Best-of-$N$ outcome selection is prohibited unless preregistered as a different experiment.
+
+Subject C executed all 18 scheduled model-active units exactly once, froze all outputs before correctness adjudication, and then blind-adjudicated the frozen candidates before unsealing the condition mapping.
+
+\subsection{Interpretation discipline}
+
+P0 is methodology/falsification history, not causal A/B correctness evidence. P1 observed equal non-zero sample performance. P2 observed equal floor-level sample performance and therefore does not positively demonstrate successful behavioural preservation. Subject C observed mostly matching behaviour outcomes plus five discordances in a small stochastic sample. None of these designs establishes superiority, equivalence, non-inferiority or a population-level effect.
+
+Confirmatory future work would require a declared task population, more independent repetitions/repositories, dependence-aware statistical analysis, preregistered stopping/missing-data rules and a scientifically justified margin if equivalence or non-inferiority is claimed.
+
+\subsection{Outcome and resource telemetry}
+
+Behavioural reporting uses frozen verifier-defined outcomes, task-level results and matched condition comparisons. Resource/reconstruction telemetry is a separate claim family and was not part of the accepted P1, P2 or Subject-C behavioural outcome set. The Repository Resumability Index and structured reconstruction probe in Section~\ref{sec:resumability} therefore specify descriptive or future instrumentation; no RRI or reconstruction-probe score is presented as an executed result in this paper. Where observable, future studies should report input/output tokens, model/tool calls, repository reads/searches, elapsed time, retries, cache counters and provider-billed usage. Provider-internal GPU scheduling, exact KV-cache cost, storage amortisation and margin are not inferred from client telemetry.
