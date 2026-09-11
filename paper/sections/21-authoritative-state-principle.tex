@@ -1,0 +1,23 @@
+\section{Broader Authoritative-State Externalisation Principle}
+\label{sec:authoritative-principle}
+
+RaS may be a software-engineering-specific instance of a broader design question:
+
+\begin{quote}
+\textbf{Persist authoritative state. Reconstruct computation.}
+\end{quote}
+
+The hostile audit removes any suggestion that the paper has already formalised or established a general principle. Outside software engineering, the relevant state may live in CRM systems, transactional databases, ticket systems, event logs, document systems, infrastructure state, or combinations of those stores.
+
+A future domain-specific experiment would need to ask behaviourally:
+- what authoritative state is available at a valid recovery boundary;
+- what predecessor model-native history is removed;
+- which other state channels are matched;
+- whether successor task outcomes degrade;
+- how much reconstruction costs.
+
+Software repositories are unusually favourable because they provide versioning, explicit diffs, executable tests, deterministic tools, schemas, reviewable text artefacts, and often reproducible builds. Other domains may rely more heavily on tacit, interpersonal, continuously changing, or externally governed information.
+
+There is also no reason to assume one store is sufficient. A production engineering programme may require repository state plus deployment state, incident history, requirements, and tickets. Calling all of this “repository state” would obscure the causal treatment.
+
+Accordingly, the Authoritative-State Externalisation Principle remains \textbf{FUTURE WORK / HYPOTHESIS}. RaS does not establish a general theory of intelligence or agent memory.
