@@ -1,0 +1,47 @@
+name: Build public Repository-as-State paper
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'paper/**'
+      - '.github/workflows/build-paper.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'paper/**'
+      - '.github/workflows/build-paper.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-paper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: paper
+
+      - name: Verify and stage PDF
+        run: |
+          test -s paper/main.pdf
+          cp paper/main.pdf Repository-as-State-v1.0.0.pdf
+          sha256sum Repository-as-State-v1.0.0.pdf > Repository-as-State-v1.0.0.pdf.sha256
+          pdfinfo Repository-as-State-v1.0.0.pdf | grep '^Pages:' || true
+
+      - name: Publish generated PDF to repository
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Repository-as-State-v1.0.0.pdf Repository-as-State-v1.0.0.pdf.sha256
+          git diff --cached --quiet && exit 0
+          git commit -m 'Publish Repository-as-State v1.0.0 PDF'
+          git push
