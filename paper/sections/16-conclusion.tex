@@ -1,0 +1,23 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+Hostile review narrows Repository-as-State rather than eliminating it.
+
+The broad idea that Git or repositories can hold agent memory is prior art. Sequential coding evaluation is prior art. Context retrieval, durable workflow execution, repository maps, model routing, cheaper repository explorers, and commit-history memory are prior art. Interrupted-task handoff research further shows that repository-only successors can pay substantial rediscovery cost.
+
+The surviving RaS question is more specific: \emph{after a dependent engineering task has reached a validated accepted repository state, what marginal behavioural value does predecessor high-capability reasoning-session state provide for the next dependent task when model, task, tools, workspace and environment are otherwise matched?}
+
+“Disposable” refers to lifecycle dependence, not elimination of computation. A fresh reasoner may recompute context. The current experiments primarily address bounded correctness outcomes; they do not establish that the reconstruction burden is economically attractive.
+
+The accepted evidence is bounded and mixed. P0 was executed once and classified \mixedstatus; its A/B correctness result is not causal evidence. P1 observed equal non-zero behavioural performance (18/30 versus 18/30, with 30 agreements and no disagreements). P2 observed equal zero performance (0/39 versus 0/39), a floor effect that provides no positive evidence of successful preservation. Subject C added one independent cross-repository replication step and observed 12/30 for persistent A and 15/30 for fresh B, with 25/30 matched agreements, five disagreements (four favouring B and one A), and tied candidate full passes at 2/9.
+
+The task-solving model is stochastic. Subject C has only three repetitions per task and nine matched task-by-repetition units; its 30 behaviour observations are nested measurements rather than 30 independent replicates. The observed 4-to-1 discordant direction is therefore descriptive only. None of P1, P2 or Subject C establishes superiority, equivalence, non-inferiority, universal repository-state sufficiency, or that conversation context never matters. The studies are not pooled.
+
+Subject C improves the evidence beyond one repository, but one additional subject does not satisfy the programme's full multi-repository/multi-task-class external-validity threshold. The current evidence remains specific to the sampled repositories/tasks and one model/runtime family.
+
+The central systems principle remains:
+\begin{quote}
+\textbf{Persist authoritative state. Reconstruct computation.}
+\end{quote}
+
+But this is a hypothesis about a boundary condition in software-engineering agent lifecycles, not a proven general law and not a claim that repositories eliminate memory or inference cost. The current programme shows that the question can be tested under explicit state, blindness, no-rerun and semantic-verification controls. Stronger claims require larger preregistered distributional studies, broader repositories/task classes, independent replication and separate reconstruction/resource evidence.
