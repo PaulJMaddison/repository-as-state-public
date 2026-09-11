@@ -1,0 +1,62 @@
+\section{Threats to Validity}
+\label{sec:threats}
+
+RaS is unusually vulnerable to validity failures because its treatment is information availability. A convincing study must control not only prompts but hidden state channels through which predecessor work can survive.
+
+\subsection{Construct validity}
+
+\textbf{Repository sufficiency is conditional, not intrinsic.} Success can depend on task class, depth, model, tool contract, environment and repository quality. The paper therefore reports matched behavioural observations rather than claiming latent action-distribution equality.
+
+\textbf{RRI is descriptive.} It mixes reconstruction and implementation ability, can be inflated by easy tasks, and is not a causal estimator.
+
+\textbf{Behaviour rows are not independent replications.} Multiple governing behaviours can be scored from one candidate/task output. In Subject C the 30 matched behaviour observations are nested within nine matched task-by-repetition units; the task outputs within each persistent-condition repetition also share one reasoning-session chain. Treating 30 behaviour rows as 30 independent trials would be pseudo-replication.
+
+\textbf{Reconstruction accuracy and cost classifications require frozen rules.} Textual similarity can reward verbosity without understanding, and repository reading/search/model work needed to reconstruct lost context must not be silently moved outside the resource accounting.
+
+\textbf{Economic observability is limited.} Client-visible tokens, calls and time do not reveal provider-internal GPU scheduling, KV-cache residency cost, storage amortisation or margin.
+
+\subsection{Internal validity}
+
+\textbf{Treatment confounding} remains the central risk. A new session can differ from a persistent one through prompts, provider account memory, prompt caches, tool sessions, executor state, shell history, untracked files, worktrees, environment variables, dependency caches or network state. The accepted studies use frozen task state and controlled execution boundaries, but provider/runtime specificity remains a limitation.
+
+\textbf{Future-history leakage} is catastrophic. Historical workspaces must not expose future solution state through refs, packs, alternates, remotes, source links, generated artefacts or task-generation material. The accepted protocols use fail-closed isolation gates before task-model activity.
+
+\textbf{Verifier leakage} invalidates behavioural testing if the task-solving agent can access hidden verifier implementation or undisclosed requirements. Subject C used an independently qualified implementation-independent semantic verifier whose implementation remained isolated from the experimental identity.
+
+\textbf{Human rescue and outcome selection} can create an undeclared continuity channel. The accepted Subject-C run prohibited quality reruns, best-of-N selection, prompt changes and manual candidate repair after model activity.
+
+\textbf{Infrastructure is not an outcome.} Authentication, ACL/materialisation, launcher/controller, transport/staging, CLI, Windows/environment and harness-development events are engineering provenance. They must not be counted as experimental failures, retries, observations, denominators or condition outcomes. The Subject-C experimental boundary began only when a valid locked scheduled task became model-active.
+
+\textbf{Model stochasticity and provider drift} can produce outcome differences unrelated to state persistence. The same state, task, prompt, model and execution configuration can yield different candidate code and verifier outcomes. Subject C has only three repetitions per task, limiting precision and making its 4-to-1 discordant direction descriptive.
+
+\subsection{Selection and author bias}
+
+The programme uses a small number of subjects/repositories and remains author-led. P0/Subject-B are particularly exposed to author familiarity, historical survivor bias and repository discipline that may favour reconstruction. Subject C used a frozen discovery/selection protocol before outcome observation and was independent of Subject B, which mitigates but does not eliminate selection and investigator bias.
+
+Historical tasks necessarily select work that reached a known accepted future state. Dead ends and ambiguous unsuccessful changes are underrepresented. Independent task construction and external replication remain necessary.
+
+\subsection{External validity}
+
+The programme now contains Subject-B and one independent Subject-C cross-repository replication step, but this is still a very small repository/task population and uses one model/runtime family. It does not establish generalisation across public repositories, languages, architectures, repository sizes, dependency widths, documentation/test quality, agent implementations or model families.
+
+The roadmap's full Level-3 threshold calls for multiple unrelated repositories/task classes and broader structural variation. Subject C is one step toward that threshold, not completion of population-level external-validity evidence.
+
+\subsection{Statistical conclusion validity}
+
+The experiments are descriptive bounded samples. Small task/repetition counts cannot establish superiority, equivalence or non-inferiority. P1's complete matched agreement is not deterministic equality. P2 is at the correctness floor. Subject C has nine matched task-by-repetition units and only three repetitions per task; its five discordances are heterogeneous across tasks and do not support a stable condition-effect estimate.
+
+No post-hoc significance, superiority, equivalence or non-inferiority test is added after observing Subject-C outcomes. Confirmatory inference would require a declared task population, more independent units, a dependence-aware analysis, missing-data/stopping rules, multiplicity handling where relevant, and a scientifically justified preregistered margin if equivalence/non-inferiority is the target.
+
+P1, P2 and Subject C are separate experiments and must not be pooled into a single correctness statistic.
+
+\subsection{Reproducibility boundary}
+
+The public repository provides a coherent audit/commitment chain for the published design, locks, freezes and aggregate adjudication. It does not make private subject source, private historical boundaries, blind mapping or hidden verifier implementation public. Therefore the current record supports auditability and commitment checking, not full independent reproduction of every experimental byte from public material alone. Independent external replication requires independently available subjects/tasks/verifiers.
+
+\subsection{Prior empirical evidence adverse to a strong thesis}
+
+Handoff Debt reports substantial rediscovery overhead for repository-only successor agents on interrupted tasks \citep{kc2026handoff}. That intervention is not the same as post-acceptance RaS, but it is adverse prior evidence against any assumption that repository reconstruction is automatically efficient. The present correctness results do not resolve the economic question because reconstruction/resource evidence remains incomplete.
+
+\subsection{Central falsification conditions}
+
+RaS is weakened if fresh-session reset reduces verified task success in a properly powered preregistered study; complete-sequence success collapses with depth; reconstruction dominates resource use; persistent history consistently yields better outcomes; success depends on unusually tailored semantic documentation; or effects disappear across unrelated repositories/models. These remain future confirmatory questions rather than claims resolved by the current bounded samples.
