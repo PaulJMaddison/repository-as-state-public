@@ -1,0 +1,71 @@
+\section{Repository-as-State}
+\label{sec:ras}
+
+RaS models an engineering programme as a sequence of validated transitions over durable repository state. The notation distinguishes durable state, active reasoning context, reasoning, execution, observations, and acceptance.
+
+Let:
+\begin{itemize}
+    \item $R_t$ be the durable repository state at time $t$;
+    \item $U_t$ be the current engineering task;
+    \item $H_t$ be accumulated conversational or agent history;
+    \item $Q_t$ be the high-capability reasoning process;
+    \item $E_t$ be the execution worker and environment;
+    \item $O_t$ be deterministic or runtime observations produced during execution.
+\end{itemize}
+
+A reconstruction function $\Gamma$ constructs the active reasoning view:
+\begin{equation}
+X_t = \Gamma(R_t,U_t).
+\label{eq:gamma}
+\end{equation}
+The high-capability reasoner applies a reasoning policy $\pi_R$:
+\begin{equation}
+P_t = \pi_R(X_t),
+\label{eq:reason}
+\end{equation}
+where $P_t$ is a bounded engineering proposal, transition plan, or work package.
+
+Execution applies the proposal against current repository state in environment $E_t$:
+\begin{equation}
+(R'_t,O_t)=\pi_E(P_t,R_t,E_t).
+\label{eq:execute}
+\end{equation}
+A validation function decides whether the candidate state is acceptable:
+\begin{equation}
+V(R'_t,O_t)\in\{0,1\}.
+\label{eq:validate}
+\end{equation}
+If $V=1$, the durable state advances:
+\begin{equation}
+R_{t+1}=\mathrm{Commit}(R'_t).
+\label{eq:commit}
+\end{equation}
+If validation fails, the candidate must not silently become authoritative. The protocol may permit repair within the current transaction, escalation, or a recorded failure, but the accepted repository state remains unchanged until the acceptance rule is satisfied.
+
+After Equation~\ref{eq:commit}, $Q_t$ may be destroyed. A future process $Q_{t+1}$ should, under the strong RaS hypothesis, be able to operate from
+\begin{equation}
+R_{t+1}+U_{t+1}
+\end{equation}
+without requiring the complete $H_t$ that produced earlier transitions.
+
+This model makes three separations explicit.
+
+\subsection{Durable state versus active context}
+
+Repository-as-State is not Repository-as-Prompt. A repository can contain millions of tokens, generated artefacts, vendored dependencies, long histories, and files irrelevant to the current task. Equation~\ref{eq:gamma} therefore matters as much as persistence itself. $R_t$ is the durable state space; $X_t$ is a selected reasoning view over that state.
+
+The reconstruction function may use file search, symbol navigation, dependency tracing, test discovery, recent history, architecture records, build metadata, static analysis, or model-guided retrieval. It may also discover that a task requires information not durably represented in the repository. Such a discovery is evidence about repository sufficiency, not merely a retrieval inconvenience.
+
+\subsection{Proposal versus execution}
+
+$P_t$ is intentionally separated from $\pi_E$. A high-capability reasoner can propose a transition without necessarily possessing repository write access, shell access, cloud credentials, or unrestricted Git permissions. The executor may be cheaper, more stateful, more local, or simply more tightly sandboxed. RaS continuity does not depend on tiered execution, but the architecture makes tiering possible.
+
+\subsection{Observation versus authority}
+
+Tool output and model statements are not automatically authoritative. Compilation results, tests, runtime measurements, hidden behavioural verification, linters, and other observations enter $O_t$, but acceptance is represented separately by $V$. This matters because an agent can incorrectly state that a task is complete. A repository becomes a continuity substrate only to the extent that its transitions are governed by evidence.
+
+Table~\ref{tab:state-artifacts} lists candidate durable-state carriers.
+
+\input{tables/durable-state-artifacts}
+
+The strongest version of RaS would exhibit three properties simultaneously: high engineering success after complete reasoning-state reset, bounded or slowly growing reconstruction cost, and no material loss in engineering quality relative to a persistent control. Those properties are not assumed. The experimental programme is designed to determine where they hold and where they fail.
