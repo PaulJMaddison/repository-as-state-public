@@ -1,0 +1,26 @@
+\section{Reproducibility and Public Evidence Boundary}
+\label{sec:reproducibility}
+
+The Repository-as-State release distinguishes \emph{public auditability} from \emph{full independent reproduction}. The public repository contains the manuscript, protocol descriptions, public-safe result records, preregistration/lock summaries, output-freeze summaries, adjudication summaries, and cryptographic commitments needed to audit the published claim chain. It does not contain private subject source, private historical boundaries, private schedules or seeds, blind mappings, credentials, or hidden verifier implementation where disclosure would violate the experimental or confidentiality boundary.
+
+The canonical public evidence chain is:
+\begin{itemize}
+    \item P0: preregistration/runtime records, raw result and post-experiment review, ending in \mixedstatus with no causal A/B correctness interpretation;
+    \item Subject-B P1: public result record plus its preregistration, execution-lock, blinded-freeze, adjudication and interpretation commitments;
+    \item Subject-B P2: preregistration binding, execution lock, output freeze, blind-adjudication recovery record, accepted result and public evidence summary;
+    \item Subject C: selection/design, verifier qualification, V4 preregistration and execution lock, 18-run output freeze, blind adjudication and bounded cross-repository evidence summary.
+\end{itemize}
+
+The top-level \breakcode{REPRODUCIBILITY.md} and machine-readable \breakcode{results/public/repository-as-state-reproducibility-manifest-v1.json} enumerate the canonical files and accepted commitments for the v1.0 release.
+
+For Subject C, the controlling public commitments include the V4 lock package SHA-256 \breakcode{9ffde0ba9974eab7efbba6d7ab644c3081fa534b211a7fa8f9aaf560d295ed13}, output-freeze package SHA-256 \breakcode{ff1616a03594f1afbdccf8d15bd841df74465eefd06d33fcb8a1de8af841a9e8}, semantic-verifier package SHA-256 \breakcode{18aa90e28afbf1f36d2aa909417cb436279ddf20fc8c99e516ae25f42f25c0cd}, blind-result commitment SHA-256 \breakcode{58e1cd7c375d847db5f7539f0afa636bc2b4643ebefcb3b53f055b3bc44fb64f}, and adjudication package SHA-256 \breakcode{0a0b23e6be9e30c042f908b84f3d5b684e9960820a4ec9115741298a0ac3b1ad}.
+
+These commitments allow later comparison against retained private packages without publishing the hidden material itself. They do not allow an external investigator to recreate every private experimental byte solely from the public repository. The appropriate stronger test is independent replication on independently available subjects and verifiers, not disclosure-by-assertion.
+
+\subsection*{Data and materials availability}
+
+Public protocols, aggregate results, public-safe execution and adjudication records, reproducibility manifests, manuscript/source material and cryptographic commitments are available in the public Repository-as-State repository and its immutable v1.0 release. Private subject repositories, private historical boundaries, schedules or seeds that would reveal protected experimental material, blind mappings, credentials and hidden verifier implementations are withheld under the declared confidentiality and experimental boundary. The released package therefore supports audit of the published claim chain and limited reconstruction from public-safe artefacts; it does not claim byte-for-byte independent reproduction of private-subject executions.
+
+The release also preserves the statistical unit boundary. Subject C contains nine matched task-by-repetition experimental units; its 30 matched behaviour observations are nested measurements and are not 30 independent replications. P1, P2 and Subject C are separate experiments and are not numerically pooled.
+
+No new experiment, verifier execution, candidate repair, post-hoc statistical test, or reinterpretation was introduced during final release packaging. Venue-specific formatting, PDF generation, archival deposition and branch integration are publication operations outside the experimental programme and must not strengthen the accepted claims.
