@@ -1,0 +1,51 @@
+\section{Behavioural Repository Sufficiency}
+\label{sec:sufficiency}
+
+The original v0.1 draft expressed repository sufficiency through equality of latent distributions over “useful next actions” and a KL-divergence bound. Hostile review rejects that formulation for the experiments reported here. The action space is open-ended, equivalent implementations need not have comparable surface actions, and the runs do not expose a well-defined probability distribution over engineering actions. KL divergence would therefore add mathematical appearance without an estimable quantity.
+
+The paper instead defines an observable behavioural target.
+
+Let $Y_{s,d,c}\in\{0,1\}$ denote preregistered verifier-defined success for task sequence $s$, depth $d$, and condition $c$. Let $c=A$ be the persistent-history control and $c=B$ the forced-reset condition. The two conditions must use the same accepted starting repository state, current task, high-capability model/configuration, tool contract, workspace image, and acceptance criteria. The intended treatment difference is availability of predecessor reasoning-session history.
+
+For a future repeated confirmatory experiment, define:
+\begin{equation}
+p_c(d)=P(Y=1\mid c,d,\mathcal{M},\mathcal{E},\mathcal{T}),
+\label{eq:behavioural-success}
+\end{equation}
+where $\mathcal{M}$ identifies the matched model/configuration, $\mathcal{E}$ the controlled execution environment, and $\mathcal{T}$ the declared task-sampling population.
+
+A future confirmatory study can preregister a scientifically justified non-inferiority margin $\delta>0$ and ask whether:
+\begin{equation}
+p_B(d)-p_A(d) \ge -\delta
+\label{eq:noninferiority-target}
+\end{equation}
+over the declared task population and depth range. If symmetric equivalence is scientifically required, a two-sided margin can be preregistered instead. The margin must be fixed before outcomes and justified in engineering terms; the present programme does not invent one after seeing results.
+
+P0 was a methodology pilot and cannot support such inference. P1, P2 and Subject C are likewise reported as bounded samples rather than confirmatory distributional estimates. Subject C has only three repetitions per task and nine matched task-by-repetition units. Its 30 behaviour observations are nested within those experimental units and within task contracts; they are not 30 independent replicates.
+
+“Repository sufficiency” is therefore shorthand for a conditional behavioural hypothesis, not an intrinsic property of a repository. A repository may be adequate for one task class, model, tool interface, and depth but not another. It also need not preserve every past thought. The question is whether accepted durable state permits matched fresh reasoning to achieve useful engineering outcomes at acceptable reconstruction cost for a declared population.
+
+Operational evidence can include:
+\begin{itemize}
+    \item verifier-defined task and behaviour outcomes;
+    \item complete-sequence success across dependent tasks;
+    \item success by sequential depth;
+    \item reconstruction-probe accuracy;
+    \item regression rate;
+    \item human-independent resumption;
+    \item reconstruction resource use and elapsed time.
+\end{itemize}
+
+Semantic-state ablation remains useful but must test marginal continuity value rather than “making the repository worse”. A future ablation should remove one small preregistered artefact class or information channel at a time while keeping task semantics intact. Redundant encoding must be audited: deleting an ADR proves little if the same decision is reproduced verbatim in a test, comment, or other allowed state.
+
+The strong RaS hypothesis is intentionally narrow: for a declared class of dependent software-engineering tasks at accepted transition boundaries, predecessor reasoning-session history may have sufficiently small marginal behavioural value that a fresh reasoner can continue from authoritative project state without material outcome loss. Whether and where that is true remains an empirical question.
+
+\subsection{What the accepted evidence shows}
+
+Subject-B P1 observed equal non-zero behavioural performance: 18/30 behaviours in each condition, with 30 matched behaviour agreements and no disagreements across three tasks. Because the model is stochastic and the sample is small, this is an observed sample agreement, not deterministic equality or statistical equivalence.
+
+Subject-B P2 expanded the same-repository design to four tasks and three repetitions. It observed 0/39 satisfied behaviours in both conditions, 39 matched agreements, no disagreements, and 0/12 candidate-level overall passes in each condition. The P2 result is therefore a floor effect: it detects no A/B difference under that design but does not demonstrate successful behavioural preservation or repository-state sufficiency.
+
+Subject C adds one independent cross-repository replication step: persistent A satisfied 12/30 behaviours and fresh B 15/30, with 25/30 matched agreements, five disagreements (one favouring A and four B), and candidate full passes tied at 2/9 per condition. Most discordance is concentrated in SC\_T01, SC\_T02 is at floor in both conditions, and SC\_T03 is near ceiling in both. With only three repetitions per task, the 4-to-1 discordant direction is descriptive only and may reflect ordinary stochastic variation.
+
+None of P1, P2 or Subject C establishes superiority, equivalence, non-inferiority, universal conversation-state dispensability, or general repository-state sufficiency. They are separate experiments and are not numerically pooled.
