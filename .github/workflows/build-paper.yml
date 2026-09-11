@@ -7,11 +7,6 @@ on:
     paths:
       - 'paper/**'
       - '.github/workflows/build-paper.yml'
-  pull_request:
-    branches: [main]
-    paths:
-      - 'paper/**'
-      - '.github/workflows/build-paper.yml'
 
 permissions:
   contents: write
@@ -20,31 +15,36 @@ jobs:
   build-paper:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - name: Clone publication repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" work
 
       - name: Install TeX toolchain
         run: |
           sudo apt-get update
           sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-pictures texlive-bibtex-extra poppler-utils
 
-      - name: Build PDF
-        working-directory: paper
-        run: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
-
-      - name: Verify and stage PDF
+      - name: Build and verify PDF
         run: |
+          cd work/paper
+          latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+          cd ..
           test -s paper/main.pdf
           cp paper/main.pdf Repository-as-State-v1.0.0.pdf
           sha256sum Repository-as-State-v1.0.0.pdf > Repository-as-State-v1.0.0.pdf.sha256
           pdfinfo Repository-as-State-v1.0.0.pdf | grep '^Pages:'
 
-      - name: Publish generated PDF to repository
-        if: github.event_name != 'pull_request'
+      - name: Publish generated PDF
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          cd work
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add Repository-as-State-v1.0.0.pdf Repository-as-State-v1.0.0.pdf.sha256
           git diff --cached --quiet && exit 0
           git commit -m 'Publish Repository-as-State v1.0.0 PDF'
-          git push
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin HEAD:main
