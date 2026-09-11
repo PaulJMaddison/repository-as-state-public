@@ -1,0 +1,28 @@
+\section{Tiered Execution}
+\label{sec:tiered}
+
+Tiered execution is \textbf{not logically necessary for RaS}. It is a secondary architecture that becomes convenient when reasoning persistence, execution state, and operational privilege are separated. The core continuity experiment must therefore be able to compare persistent-history and forced-reset conditions without changing executor quality.
+
+A high-capability reasoner may be useful for architecture, decomposition, difficult causal reasoning, complex debugging, review, trade-off analysis, evidence interpretation, and work-package creation. A separate worker may perform repository edits, compilation, test execution, formatting, linting, Git operations, and tightly constrained environment interaction.
+
+\input{tables/reasoner-executor}
+
+Let $N_R$ and $N_E$ denote reasoning and execution operations and let $c_R$, $c_E$, and $C_O$ denote their accounting-unit costs and orchestration overhead. Under the deliberately simplified accounting model:
+\begin{align}
+C_M&=(N_R+N_E)c_R,\
+C_T&=N_Rc_R+N_Ec_E+C_O.
+\end{align}
+Therefore $C_T<C_M$ exactly when:
+\begin{equation}
+N_E(c_R-c_E)>C_O.
+\label{eq:tiered}
+\end{equation}
+
+This inequality is elementary accounting, not a research contribution. It is retained only to expose the condition that hand-off overhead and quality failures must be included before declaring tiering cheaper. The quantities are not assumed to be monetary, mutually constant, or directly observable across providers.
+
+Recent work independently studies modular repository exploration with lower-cost models and finds useful quality/cost operating points for issue localisation \citep{awad2026exploration}. Model routing is also established prior work \citep{ong2024routellm}. RaS therefore claims no novelty for using cheaper models for suboperations.
+
+Tiered execution can fail because a work package omits a constraint, the executor cannot handle an unexpected state, tool permissions differ, or repeated hand-offs cause retries and re-entry. Any economic study must count those failures.
+
+\paragraph{P0 scope.}
+Condition D is removed from the primary P0 causal comparison. P0 should first establish whether conditions A and B can be matched except for predecessor reasoning-session history. A small preregistered semantic-state ablation may be exploratory. Tiered execution belongs in a later experiment once the continuity intervention itself is identifiable.
