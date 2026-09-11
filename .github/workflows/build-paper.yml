@@ -23,18 +23,21 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Install TeX toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-pictures texlive-bibtex-extra poppler-utils
+
       - name: Build PDF
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: main.tex
-          working_directory: paper
+        working-directory: paper
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 
       - name: Verify and stage PDF
         run: |
           test -s paper/main.pdf
           cp paper/main.pdf Repository-as-State-v1.0.0.pdf
           sha256sum Repository-as-State-v1.0.0.pdf > Repository-as-State-v1.0.0.pdf.sha256
-          pdfinfo Repository-as-State-v1.0.0.pdf | grep '^Pages:' || true
+          pdfinfo Repository-as-State-v1.0.0.pdf | grep '^Pages:'
 
       - name: Publish generated PDF to repository
         if: github.event_name != 'pull_request'
